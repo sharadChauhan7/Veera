@@ -13,7 +13,6 @@ import IMG from '../../constant/images.js'
 const CustomDrawerContent = (props) => {
     const { signOut } = useSession();
     const pathName = usePathname();
-    console.log(IMG.profile);
     return (
         <DrawerContentScrollView {...props}>
             <View classname=" border-2">
@@ -30,34 +29,34 @@ const CustomDrawerContent = (props) => {
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/home' ? 'white' : 'black' }}
                 label={"Home"}
-                style={{ backgroundColor: pathName === '/home' ? '#333' : 'white' }}
+                style={{ backgroundColor: pathName === '/home' ? '#FF5555' : 'white' }}
                 icon={({ color, size }) => <Expoicons.FontAwesome name="home" size={size} color={pathName === '/home' ? 'white' : color} />}
                 onPress={() => router.push('(drawer)/(tabs)/home')}
             />
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/maps' ? 'white' : 'black' }}
                 label={"Maps"}
-                style={{ backgroundColor: pathName === '/maps' ? '#333' : 'white' }}
+                style={{ backgroundColor: pathName === '/maps' ? '#FF5555' : 'white' }}
                 icon={({ color, size }) => <Expoicons.Entypo name="map" size={size} color={pathName === '/maps' ? 'white' : color} />}
                 onPress={() => router.push('(drawer)/(tabs)/maps')}
             />
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/profile' ? 'white' : 'black' }}
-                style={{ backgroundColor: pathName === '/profile' ? '#333' : 'white' }}
+                style={{ backgroundColor: pathName === '/profile' ? '#FF5555' : 'white' }}
                 label={"Profile"}
                 icon={({ color, size }) => <Expoicons.FontAwesome name="user" size={size} color={pathName === '/profile' ? 'white' : color} />}
                 onPress={() => router.push('(drawer)/(tabs)/profile')}
             />
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/setting' ? 'white' : 'black' }}
-                style={{ backgroundColor: pathName === '/setting' ? '#333' : 'white' }}
+                style={{ backgroundColor: pathName === '/setting' ? '#FF5555' : 'white' }}
                 label={"Setting"}
                 icon={({ color, size }) => <Expoicons.FontAwesome name="gear" size={size} color={pathName === '/setting' ? 'white' : color} />}
                 onPress={() => router.push('(drawer)/(tabs)/setting')}
             />
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/sign-in' ? 'white' : 'black' }}
-                style={{ backgroundColor: pathName === 'sign-in' ? '#333' : 'white' }}
+                style={{ backgroundColor: pathName === 'sign-in' ? '#FF5555' : 'white' }}
                 label={"Sign Out"}
                 icon={({ color, size }) => <Expoicons.FontAwesome name="sign-out" size={size} color={pathName === '/sign-out' ? 'white' : color} />}
                 onPress={() => { signOut() }}
@@ -76,6 +75,9 @@ const _layout = () => {
         <GestureHandlerRootView style={{ flex: 1 }}>
             <Drawer
                 drawerContent={(props) => <CustomDrawerContent {...props} />}
+                screenOptions={{
+                    headerShown: false,
+                }}
             />
         </GestureHandlerRootView>
     )
