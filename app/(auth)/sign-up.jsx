@@ -92,16 +92,10 @@ const SignUp = () => {
             />
             {/* Emergency Contact Field */}
 
-            {/* <FormField
-                title="Emergency Contact"
-                value={form.emergencyContact}
-                handleChangeText={(e) => setForm({ ...form, emergencyContact: e })}
-                otherStyles="mt-7"
-                keyboardType="phone-pad"
-            /> */}
             <AccordionItem
                 title="Emergency Contacts"
                 label={"Note: Can add multiple contacts"}
+                
             >
               <FormField
                 title="Name"
