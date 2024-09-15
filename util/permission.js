@@ -1,3 +1,5 @@
+import * as TaskManager from 'expo-task-manager';
+
 export const getLocation= async (Location)=>{
     let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {

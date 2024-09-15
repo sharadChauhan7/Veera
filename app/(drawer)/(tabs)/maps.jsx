@@ -4,9 +4,10 @@ import MapView from 'react-native-maps';
 import { getLocation } from '../../../util/permission';
 import * as Location from 'expo-location';
 
+
+
+
 const MapScreen = () => {
-
-
 
   const [mapRegion, setMapRegion] = useState({
     latitude: 27.4488793,
@@ -14,7 +15,7 @@ const MapScreen = () => {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
-
+  
   useEffect(() => {
     async function fetchCurrentLocation() {
       try {
@@ -30,10 +31,12 @@ const MapScreen = () => {
         console.error("Error fetching location: ", error);
       }
     }
-
+    
     fetchCurrentLocation();
+    
+    
   }, []);
-
+  
 
 
 
