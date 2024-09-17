@@ -6,7 +6,6 @@ import { DrawerToggleButton } from '@react-navigation/drawer'
 const _layout = () => {
     return (
         <Tabs
-
             screenOptions={{
 
                 headerLeft: () => <DrawerToggleButton 
