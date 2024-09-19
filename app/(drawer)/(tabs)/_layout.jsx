@@ -23,8 +23,6 @@ const _layout = () => {
                     fontSize: 24,
                 },
                 tabBarActiveTintColor: "#FF5555",
-                // tabBarInactiveTintColor: "#CDCDE0",
-                // tabBarShowLabel: false,
                 tabBarStyle: {
                   backgroundColor: "#fff",
                   borderTopWidth: 1,

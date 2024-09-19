@@ -12,12 +12,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "permissions": [
-      "android.permission.ACCESS_FINE_LOCATION",
-      "android.permission.ACCESS_BACKGROUND_LOCATION",
-      "android.permission.FOREGROUND_SERVICE"
-  
-    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -31,6 +25,11 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": [
+      "android.permission.ACCESS_FINE_LOCATION",
+      "android.permission.ACCESS_BACKGROUND_LOCATION",
+      "android.permission.FOREGROUND_SERVICE"
+    ],
       "infoPlist": {
         "UIBackgroundModes": ["location", "fetch", "remote-notification"]
       }
