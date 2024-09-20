@@ -15,11 +15,6 @@ const requestPermissions = async () => {
         console.log("Bg - granted");
         await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME,{
           accuracy: Location.Accuracy.Balanced,
-          // foregroundService: {
-          //   notificationTitle: 'Location Tracking',
-          //   notificationBody: 'Your location is being tracked in the background',
-          //   notificationColor: '#FF0000'
-          // }
         });
       }
     }
