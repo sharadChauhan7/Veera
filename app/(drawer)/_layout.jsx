@@ -27,18 +27,25 @@ const CustomDrawerContent = (props) => {
                 </View>
             </View>
             <DrawerItem
-                labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/profile' ? 'white' : 'black' }}
-                style={{ backgroundColor: pathName === '/profile' ? '#FF5555' : 'white' }}
-                label={"Profile"}
-                icon={({ color, size }) => <Expoicons.FontAwesome name="user" size={size} color={pathName === '/profile' ? 'white' : color} />}
-                onPress={() => router.push('(drawer)/(tabs)/profile')}
-            />
-            <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/home' ? 'white' : 'black' }}
                 label={"Home"}
                 style={{ backgroundColor: pathName === '/home' ? '#FF5555' : 'white' }}
                 icon={({ color, size }) => <Expoicons.FontAwesome name="home" size={size} color={pathName === '/home' ? 'white' : color} />}
                 onPress={() => router.push('(drawer)/(tabs)/home')}
+            />
+            <DrawerItem
+                labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/profile' ? 'white' : 'black' }}
+                style={{ backgroundColor: pathName === '/profile' ? '#FF5555' : 'white' }}
+                label={"Profile"}
+                icon={({ color, size }) => <Expoicons.FontAwesome name="user" size={size} color={pathName === '/profile' ? 'white' : color} />}
+                onPress={() => router.push('(drawer)/profile')}
+            />
+            <DrawerItem
+                labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/wellness' ? 'white' : 'black' }}
+                style={{ backgroundColor: pathName === '/wellness' ? '#FF5555' : 'white' }}
+                label={"WellNess"}
+                icon={({ color, size }) => <Expoicons.MaterialIcons name="health-and-safety" size={size} color={pathName === '/wellness' ? 'white' : color} />}
+                onPress={() => router.push('(drawer)/(tabs)/wellness')}
             />
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/maps' ? 'white' : 'black' }}
@@ -50,10 +57,10 @@ const CustomDrawerContent = (props) => {
             
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/setting' ? 'white' : 'black' }}
-                style={{ backgroundColor: pathName === '/setting' ? '#FF5555' : 'white' }}
-                label={"Setting"}
-                icon={({ color, size }) => <Expoicons.FontAwesome name="gear" size={size} color={pathName === '/setting' ? 'white' : color} />}
-                onPress={() => router.push('(drawer)/(tabs)/setting')}
+                style={{ backgroundColor: pathName === '/contacts' ? '#FF5555' : 'white' }}
+                label={"Contacts"}
+                icon={({ color, size }) => <Expoicons.AntDesign name="contacts" size={size} color={pathName === '/contacts' ? 'white' : color} />}
+                onPress={() => router.push('(drawer)/(tabs)/contacts')}
             />
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/sign-in' ? 'white' : 'black' }}
@@ -76,9 +83,12 @@ const _layout = () => {
         <GestureHandlerRootView style={{ flex: 1 }}>
             <Drawer
                 drawerContent={(props) => <CustomDrawerContent {...props} />}
-                screenOptions={{
-                    headerShown: false,
-                }}
+                screenOptions={({ route }) => ({
+                    headerShown: route.name === 'profile' ? true : false, // Show header on profile page only
+                    headerTitle: route.name === 'profile' ? 'Profile' : '', // Set header title for profile
+                    headerStyle: { backgroundColor: '#FF5555' }, // Customize header style
+                    headerTintColor: '#fff', // Header text color
+                })}
             />
         </GestureHandlerRootView>
     )

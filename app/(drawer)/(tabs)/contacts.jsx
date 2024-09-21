@@ -41,14 +41,14 @@ const AddNewButton = () => {
 // Main Contact List Component
 const ContactList = () => {
   const contacts = [
-    { id: '1', name: 'Dad', phone: '293-616-3324', image: 'https://example.com/dad.jpg' },
-    { id: '2', name: 'Mom', phone: '293-616-3324', image: 'https://example.com/mom.jpg' },
-    { id: '3', name: 'Son', phone: '293-616-3324', image: 'https://example.com/son.jpg' },
-    { id: '4', name: 'Granny', phone: '293-616-3324', image: 'https://example.com/granny.jpg' },
-    { id: '5', name: 'Dad', phone: '293-616-3324', image: 'https://example.com/dad.jpg' },
-    { id: '6', name: 'Mom', phone: '293-616-3324', image: 'https://example.com/mom.jpg' },
-    { id: '7', name: 'Son', phone: '293-616-3324', image: 'https://example.com/son.jpg' },
-    { id: '8', name: 'Granny', phone: '293-616-3324', image: 'https://example.com/granny.jpg' },
+    { id: '1', name: 'Dad', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '2', name: 'Mom', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '3', name: 'Son', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '4', name: 'Granny', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '5', name: 'Dad', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '6', name: 'Mom', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '7', name: 'Son', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
+    { id: '8', name: 'Granny', phone: '293-616-3324', image: 'https://via.placeholder.com/150' },
   ];
 
   return (

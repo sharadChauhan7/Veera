@@ -19,6 +19,7 @@ module.exports = {
           100: "#CDCDE0",
         },
       },
+      
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],
         pextralight: ["Poppins-ExtraLight", "sans-serif"],

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Text, ScrollView, Dimensions,Alert, Image } from "react-native";
+import { View, Text, Picker,ScrollView, Dimensions,Alert, Image,Button,
+  TouchableOpacity
+ } from "react-native";
 
 import  images  from "../../constant/images.js";
 import  CustomButton  from "../../components/CustomButton.jsx";
@@ -10,19 +12,28 @@ import { useSession } from '../../context/ctx.jsx';
 import {getLocation} from '../../util/permission'
 import * as Location from 'expo-location';
 import AccordionItem from '../../components/Accordion.jsx';
+// import { Picker } from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import GenderPicker from '../../components/GenderPicker.jsx';
+
+
 
 const SignUp = () => {
     const router = useRouter();
     const { signUp } = useSession();
     const [isSubmitting, setSubmitting] = useState(false);
-
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    password: "",
-    location:""
-  });
+    const [selectedGender, setSelectedGender] = useState(null);
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [form, setForm] = useState({
+      name: "",
+      phone: "",
+      email: "",
+      password: "",
+      location:"",
+      gender:"Female",
+      dob:new Date(),
+    });
+    console.log(form);
     const submit = async () => {
         if (form.email === "" || form.password === "" || form.name === "" || form.phone === "" || form.emergencyContact === "") {
           Alert.alert("Error", "Please fill in all fields");
@@ -90,32 +101,34 @@ const SignUp = () => {
                 otherStyles="mt-7"
                 keyboardType="phone-pad"
             />
-            {/* Emergency Contact Field */}
+            <View className="mt-4">
+                {/* Gender and DOB picker */}
+                <Text className="text-lg text-gray-700 font-pregular">Gender</Text>
+                <GenderPicker selectedGender={form.gender}  setForm={setForm} form={form} />
 
-            <AccordionItem
-                title="Emergency Contacts"
-                label={"Note: Can add multiple contacts"}
-                
-            >
-              <FormField
-                title="Name"
-                value={emergencyContact.name}
-                handleChangeText={(e) => setEmergencyContact({ ...emergencyContact, name: e })}
-                otherStyles="mt-7"
-            /> 
-            <FormField
-                title="Emergency Contact"
-                value={emergencyContact.phone}
-                handleChangeText={(e) => setEmergencyContact({ ...emergencyContact, phone: e })}
-                otherStyles="mt-7"
-                keyboardType="phone-pad"
-            /> 
-            <CustomButton
-            title={"Add Contact"}
-            handlePress={addContact}
-            containerStyles="mt-7"
-            />
-              </AccordionItem>
+                <Text className="text-lg text-gray-700 font-pregular my-3">Date of Birth</Text>
+                <TouchableOpacity
+                    className="w-full h-10 px-4 bg-secondary rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center"
+                    onPress={() => setShowDatePicker(true)}
+                >
+                    <Text className="flex-1 text-black font-psemibold text-base">
+                        {form.dob.toDateString()}
+                    </Text>
+                </TouchableOpacity>
+                {showDatePicker && (
+                    <DateTimePicker
+                        value={form.dob}
+                        mode="date"
+                        display="default"
+                        onChange={(event, selectedDate) => {
+                            const currentDate = selectedDate || form.dob;
+                            setShowDatePicker();
+                            setForm({ ...form, dob: currentDate });
+                        }}
+                    />
+                )}
+            </View>
+
             {/* Email field */}
           <FormField
             title="Email"

@@ -9,9 +9,7 @@ const _layout = () => {
             screenOptions={{
 
                 headerLeft: () => <DrawerToggleButton 
-                tintColor='#fff'
-
-                
+                tintColor='#fff'                
                 />,
                 // Customise Header
                 headerStyle: {
@@ -68,7 +66,7 @@ const _layout = () => {
                 options={{
                     title: "Contact",
                     tabBarIcon: ({ color }) => (
-                        <Expoicon.FontAwesome name="gear" size={24} color={color} />
+                        <Expoicon.AntDesign name="contacts" size={24} color={color} />
                     ),
                     headerShown: true,
                 }}
