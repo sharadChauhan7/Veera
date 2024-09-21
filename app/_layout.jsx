@@ -35,8 +35,8 @@ export default function RootLayout() {
       screenOptions={{
         headerShown: false,
       }}>
-        <Stack.Screen name="index" options={{}} />
-        <Stack.Screen name="(auth)" options={{}} />
+        {/* <Stack.Screen name="index" options={{}} /> */}
+        {/* <Stack.Screen name="(auth)" options={{}} /> */}
         {/* <Stack.Screen name="(tabs)" options={{}} /> */}
         <Stack.Screen name="(drawer)" options={{}} />
       </Stack>

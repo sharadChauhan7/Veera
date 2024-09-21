@@ -5,12 +5,14 @@ import { StatusBar } from 'expo-status-bar';
 import images from '../constant/images.js';
 import CustomButton from '../components/CustomButton.jsx';
 import Loader from '../components/Loader.jsx';
-import { useRouter } from 'expo-router';
+import { Redirect, useRouter } from 'expo-router';
 
 
 const Home = () => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+
+    return <Redirect href='wellness'/>
   return (
     <>
       <SafeAreaView className="bg-primary h-full">

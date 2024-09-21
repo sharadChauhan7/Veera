@@ -27,6 +27,13 @@ const CustomDrawerContent = (props) => {
                 </View>
             </View>
             <DrawerItem
+                labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/profile' ? 'white' : 'black' }}
+                style={{ backgroundColor: pathName === '/profile' ? '#FF5555' : 'white' }}
+                label={"Profile"}
+                icon={({ color, size }) => <Expoicons.FontAwesome name="user" size={size} color={pathName === '/profile' ? 'white' : color} />}
+                onPress={() => router.push('(drawer)/(tabs)/profile')}
+            />
+            <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/home' ? 'white' : 'black' }}
                 label={"Home"}
                 style={{ backgroundColor: pathName === '/home' ? '#FF5555' : 'white' }}
@@ -40,13 +47,7 @@ const CustomDrawerContent = (props) => {
                 icon={({ color, size }) => <Expoicons.Entypo name="map" size={size} color={pathName === '/maps' ? 'white' : color} />}
                 onPress={() => router.push('(drawer)/(tabs)/maps')}
             />
-            <DrawerItem
-                labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/profile' ? 'white' : 'black' }}
-                style={{ backgroundColor: pathName === '/profile' ? '#FF5555' : 'white' }}
-                label={"Profile"}
-                icon={({ color, size }) => <Expoicons.FontAwesome name="user" size={size} color={pathName === '/profile' ? 'white' : color} />}
-                onPress={() => router.push('(drawer)/(tabs)/profile')}
-            />
+            
             <DrawerItem
                 labelStyle={{ marginLeft: -20, fontSize: 18, color: pathName === '/setting' ? 'white' : 'black' }}
                 style={{ backgroundColor: pathName === '/setting' ? '#FF5555' : 'white' }}
@@ -68,9 +69,9 @@ const CustomDrawerContent = (props) => {
 const _layout = () => {
     const { session } = useSession();
     console.log(session);
-    if (!session) {
-        return <Redirect href="sign-in" />
-    }
+    // if (!session) {
+    //     return <Redirect href="sign-in" />
+    // }
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <Drawer

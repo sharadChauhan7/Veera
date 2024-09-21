@@ -31,7 +31,7 @@ const _layout = () => {
                 },
                 headerShown:false,
               }}
-        >
+              >
             <Tabs.Screen
                 name="home"
                 options={{
@@ -52,22 +52,21 @@ const _layout = () => {
                     headerShown: true,
                 }}
             />
+                <Tabs.Screen
+                    name="wellness"
+                    options={{
+                        title: "Wellness",
+                        tabBarIcon: ({ color }) => (
+                          <Expoicon.MaterialIcons name="health-and-safety" size={24} color={color} />
+                        ),
+                        headerShown: true,
+                    }}
+                />
             <Tabs.Screen
-                name="profile"
+                name="contacts"
 
                 options={{
-                    title: "Profile",
-                    tabBarIcon: ({ color }) => (
-                        <Expoicon.FontAwesome name="user" size={24} color={color} />
-                    ),
-                    headerShown: true,
-                }}
-            />
-            <Tabs.Screen
-                name="setting"
-
-                options={{
-                    title: "Setting",
+                    title: "Contact",
                     tabBarIcon: ({ color }) => (
                         <Expoicon.FontAwesome name="gear" size={24} color={color} />
                     ),
