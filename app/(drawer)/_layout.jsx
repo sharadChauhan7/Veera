@@ -8,6 +8,10 @@ import { useSession } from '../../context/ctx.jsx';
 import { Redirect } from 'expo-router'
 import Expoicons from '../../constant/expoIcon.js'
 import IMG from '../../constant/images.js'
+import { Emergency } from '../../util/sosMethod.js';
+import { Accelerometer } from 'expo-sensors';
+import { useEffect, useRef } from 'react';
+
 
 
 const CustomDrawerContent = (props) => {
@@ -74,11 +78,37 @@ const CustomDrawerContent = (props) => {
     )
 }
 const _layout = () => {
+    const isEmergency = useRef(false);
     const { session } = useSession();
-    console.log(session);
-    // if (!session) {
-    //     return <Redirect href="sign-in" />
-    // }
+    if (!session) {
+        return <Redirect href="sign-in" />
+    }
+    const sendAlert = async()=>{
+        try{
+            if (isEmergency.current) return;
+
+        isEmergency.current = true;
+
+            await Emergency(session);
+    
+            setTimeout(() => {
+            isEmergency.current = false;
+            }, 3000);
+        }
+        catch(e){
+            console.log(e);
+        }
+      }
+    useEffect(() => {
+        // Start the accelerometer listener when the component mounts
+        const subscription = Accelerometer.addListener((acceleration) => {
+          if (!isEmergency.current && (acceleration.x > 5 || acceleration.y > 5 || acceleration.z > 5)) {
+            sendAlert();
+          }
+        });
+    
+        return () => subscription.remove(); // Clean up the listener when the component unmounts
+      }, []);
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <Drawer

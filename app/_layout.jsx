@@ -6,16 +6,22 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import {SessionProvider} from '../context/ctx.jsx';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import registerNNPushToken from 'native-notify';
+
 // import { useColorScheme } from '@/hooks/useColorScheme';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+    registerNNPushToken(23095, 't7U6tMbwevUKc9gC7Eddsf');
+
   const colorScheme = 'light';
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/Poppins-Regular.ttf'),
   });
+
+
 
   useEffect(() => {
     if (loaded) {
@@ -23,9 +29,10 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
+
+
+
+
 
   return (
     <SessionProvider>
@@ -35,9 +42,9 @@ export default function RootLayout() {
       screenOptions={{
         headerShown: false,
       }}>
-        {/* <Stack.Screen name="index" options={{}} /> */}
-        {/* <Stack.Screen name="(auth)" options={{}} /> */}
-        {/* <Stack.Screen name="(tabs)" options={{}} /> */}
+        <Stack.Screen name="index" options={{}} />
+        <Stack.Screen name="(auth)" options={{}} />
+        <Stack.Screen name="(tabs)" options={{}} />
         <Stack.Screen name="(drawer)" options={{}} />
       </Stack>
         {/* </SafeAreaView> */}

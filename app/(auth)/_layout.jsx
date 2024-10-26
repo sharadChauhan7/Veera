@@ -4,9 +4,18 @@ import { Stack } from 'expo-router'
 import Loader from '../../components/Loader'
 import { StatusBar } from 'expo-status-bar'
 import { useState } from 'react'
+import { useSession } from '../../context/ctx'
+import { useRouter } from 'expo-router'
 
 const AuthLayout = () => {
+  // useSession
+  const { session } = useSession();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  if(session){
+   return router.push('/home');
+  }
 
   return (
     <>

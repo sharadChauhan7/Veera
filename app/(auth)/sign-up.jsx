@@ -47,13 +47,13 @@ const SignUp = () => {
           router.replace("/home");
         } catch (error) {
           // Get the error message from the error object
-          console.dir(error)
+          console.log(error)
           Alert.alert("Error", error.message);
         } finally {
           setSubmitting(false);
         }
     };
-    let [contacts,setContacts] = useState([]);
+    let [contacts,setContacts] = useState([{name:"John Doe",phone:"0123456789"}]);
     let [emergencyContact,setEmergencyContact] = useState({name:"",phone:""});
 
     const addContact = (e)=>{
@@ -93,6 +93,8 @@ const SignUp = () => {
                 handleChangeText={(e) => setForm({ ...form, name: e })}
                 otherStyles="mt-7"
             />
+            {/* Emergency contact field */}
+
             {/* Phone field */}
             <FormField
                 title="Phone"
@@ -101,6 +103,30 @@ const SignUp = () => {
                 otherStyles="mt-7"
                 keyboardType="phone-pad"
             />
+            {/* Emergency Contact */}
+            <AccordionItem
+                title="Emergency Contacts"
+                label={"Note: Can add multiple contacts"}
+            >
+              <FormField
+                title="Name"
+                value={emergencyContact.name}
+                handleChangeText={(e) => setEmergencyContact({ ...emergencyContact, name: e })}
+                otherStyles="mt-7"
+            /> 
+            <FormField
+                title="Emergency Contact"
+                value={emergencyContact.phone}
+                handleChangeText={(e) => setEmergencyContact({ ...emergencyContact, phone: e })}
+                otherStyles="mt-7"
+                keyboardType="phone-pad"
+            /> 
+            <CustomButton
+            title={"Add Contact"}
+            handlePress={addContact}
+            containerStyles="mt-7"
+            />
+              </AccordionItem>
             <View className="mt-4">
                 {/* Gender and DOB picker */}
                 <Text className="text-lg text-gray-700 font-pregular">Gender</Text>

@@ -5,8 +5,7 @@ import { styled } from 'nativewind';
 import IMG from '../../constant/images.js'
 
 const ProfilePage = () => {
-    console.log(IMG.profile)
-;  return (
+  return (
     <ScrollView className="flex-1 ">
       {/* Profile Card */}
       <View className="items-center p-4">

@@ -2,8 +2,17 @@ import { Tabs } from 'expo-router'
 import React from 'react'
 import Expoicon from '../../../constant/expoIcon.js'
 import { DrawerToggleButton } from '@react-navigation/drawer'
+import { Accelerometer } from 'expo-sensors';
+import { useRef, useEffect } from 'react';
+import { useRouter } from 'expo-router';
+import { useSession } from '../../../context/ctx';
+import { Emergency } from '../../../util/sosMethod.js'
+
 
 const _layout = () => {
+
+
+    
     return (
         <Tabs
             screenOptions={{

@@ -1,6 +1,8 @@
 import React, { useState,useEffect,useRef } from 'react';
 import { View, Switch, Pressable, Text,Animated } from 'react-native';
 import ExpoIcon from '../../../constant/expoIcon.js'
+import { Emergency,FalseTrue } from '../../../util/sosMethod.js';
+import Etimer from '../../../components/eTimer.jsx';
 
 
 const wellness = () => {
@@ -8,6 +10,8 @@ const wellness = () => {
   const scaleAnim = useRef(new Animated.Value(1)).current; // Initial scale
 
   const [isEnabled, setIsEnabled] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     const pingAnimation = Animated.loop(
       Animated.sequence([
@@ -37,42 +41,22 @@ const wellness = () => {
     setIsEnabled((previousState) => !previousState);
   };
 
-  // return (
-  //   <Animated.View
-  //       style={{
-  //         transform: [{ scale: scaleAnim }],
-  //         borderColor: isEnabled ? '#34d399' : '#2563eb',
-  //         borderWidth: 2,
-  //         width: 256,
-  //         height: 256,
-  //         padding: 2,
-  //         borderRadius: 999,
-  //         justifyContent: 'center',
-  //         alignItems: 'center',
-  //       }}
-  //     >
-  //       <View style={{ padding: 7, backgroundColor: '#86efac', borderRadius: 999 }}>
-  //       <Pressable
-  //         style={{
-  //           backgroundColor: isEnabled ? '#34d399' : '#FF5555',
-  //           width: '100%',
-  //           height: '100%',
-  //           borderRadius: 999,
-  //           justifyContent: 'center',
-  //           alignItems: 'center',
-  //         }}
-  //         onPress={toggleSwitch}
-  //       >
-  //         <ExpoIcon.MaterialIcons name="emergency-share" size={70} color="white" />
-  //         <Text style={{ marginVertical: 8, fontSize: 20, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-  //           WellNess
-  //         </Text>
-  //       </Pressable>
-  //   </View>
-  //     </Animated.View>
-  // );
+  useEffect(()=>{
+    let timer;
+    if(isEnabled){
+      timer=setInterval(()=>{
+        setModalVisible(true);
+      },10000)
+    }
+    else{
+      clearTimeout(timer);
+    }
+    return () => clearTimeout(timer);
+  })
 
   return (
+    <>
+    <Etimer isTrue={()=>{Emergency(errorMsg)}} isFalse={FalseTrue} modalVisible={modalVisible} setModalVisible={setModalVisible} />
     <View className="flex-1 items-center justify-center bg-white">
       <View className="flex flex-col items-center justify-center ">
         <Text className="text-3xl font-bold px-5 text-gray-600 text-center mb-16 z-10">WellNess Mode is {isEnabled ? "Enabled" : "Disabled"}</Text>
@@ -105,6 +89,7 @@ const wellness = () => {
           </View>
         </View>
     </View>
+    </>
   );
 };
 

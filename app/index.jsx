@@ -11,8 +11,6 @@ import { Redirect, useRouter } from 'expo-router';
 const Home = () => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
-
-    return <Redirect href='wellness'/>
   return (
     <>
       <SafeAreaView className="bg-primary h-full">
@@ -58,7 +56,7 @@ const Home = () => {
 
             <CustomButton
               title="Continue"
-              handlePress={() => router.push("/home")}
+              handlePress={() => router.push("/sign-in")}
               containerStyles="w-full mt-7"
             />
           </View>
